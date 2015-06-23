@@ -1,0 +1,30 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="panel-heading">Metadata</div>
+    <div id="dtabhom">
+      <table id="tabex" ng-repeat="detail in metadata">
+        <tr ng-repeat="(ks, value) in detail.primaryReplicas[0]">
+          <td id="thex" style="text-align:left">{{ks}}</td>
+          <td id="tdex">{{value}}</td>
+        </tr>
+      </table>
+    </div>
+    <!--<ul ng-repeat="detail in metadata">
+      <li ng-repeat="(ks, value) in detail.primaryReplicas[0]">
+        <span>{{ks}}:</span>
+        <span>{{value}}</span>
+      </li>
+    </ul>-->
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="panel-heading">Keyspaces:</div>
+      <ul ng-repeat="keyspace in metadata">
+        <li ng-repeat="(ks, value) in keyspace.keyspaces">
+          <span>{{ks}}</span>
+        </li>
+      </ul>
+  </div>
+</div>

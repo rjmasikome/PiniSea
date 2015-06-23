@@ -1,0 +1,45 @@
+
+
+<div class="container-fluid" style="height:100%">
+  <div class="col-sm-2 col-md-2 col-lg-2" style="height:100%">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="text-transform:none">KEYSPACE: <span id="phvex">{{keySpace}}</span></div>
+      <div class="panel-body" style="overflow:auto">
+        <ul ng-repeat="keyspace in metadata" class="genres" style="list-style-type:none; padding:0">
+          <li ng-click="GetTables(ks)" ng-repeat="(ks, value) in keyspace.keyspaces" style="display:list-item; text-align:left; font-size:small">
+            {{ks}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-10 col-md-10 col-lg-10" ng-hide="shown">
+    <div class="panel panel-default" style="height:100%">
+      <div class="panel-heading">Metadata</div>
+    <div id="dtabhom">
+      <table id="tabex" ng-repeat="detail in metadata">
+        <tr ng-repeat="(ks, value) in detail.primaryReplicas[0]">
+          <td id="thex" style="text-align:left">{{ks}}</td>
+          <td id="tdex">{{value}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+  <div class="col-sm-10 col-md-10 col-lg-10" ng-show="shown">
+    <div class="panel panel-default" style="height:100%">
+      <div class="panel-heading">Keyspace Metadata</div>
+    <div id="dtabex" style="height:100%">
+      <table id="tabex">
+            <tr>
+              <th ng-repeat="(key, value) in tables[0]" id="thex">{{key}}</th>
+            </tr>
+            <tr ng-repeat="items in tables">
+              <td ng-repeat="(key,value) in items" id="tdex">{{value}}</td>
+            </tr>
+          </table>
+    </div>
+  </div>
+</div>
+</div>
+

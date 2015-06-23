@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+	<head>
+	  <base href="/">
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>PiniSea Web</title>
+	  <link rel="icon" type="image/png" href="favicon.png"/>
+	  <link href="stylesheets/style.css" rel="stylesheet">
+	</head>
+	<body>
+		
+		<div class="navbar navbar-default navbar-static-top"
+		     role="navigation" bs-navbar>
+		  <div class="navbar-header">
+		    <a class="navbar-brand" href="/$">
+		      <span class="glyphicon glyphicon-film"></span>
+		      Pini<strong>Sea</strong></a>
+		  </div>
+		  <ul class="nav navbar-nav">
+		  </ul>
+		</div>
+
+		<div ng-view></div>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="vendor/angular.js"></script>
+		<script src="vendor/angular-strap.js"></script>
+		<script src="vendor/angular-strap.tpl.js"></script>
+		<script src="vendor/angular-messages.js"></script>
+		<script src="vendor/angular-resource.js"></script>
+		<script src="vendor/angular-route.js"></script>
+		<script src="vendor/moment.min.js"></script>
+		<script src='vendor/lodash.min.js'></script>
+		<script src='vendor/angular-google-maps.min.js'></script>
+		<script src="app.js"></script>
+		<script src="controllers/main.js"></script>
+		<script src="services/show.js"></script>
+	</body>
+</html>

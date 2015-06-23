@@ -1,0 +1,43 @@
+<div class="container-fluid" style="height:100%">
+  <div class="col-sm-2 col-md-2 col-lg-2" style="height:100%">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="text-transform:none">KEYSPACE: <span id="phvex">{{keySpace}}</span></div>
+      <div class="panel-body" style="overflow:auto">
+        <ul ng-repeat="keyspace in metadata" class="genres" style="list-style-type:none; padding:0">
+          <li ng-click="GetTables(ks)" ng-repeat="(ks, value) in keyspace.keyspaces" style="display:list-item; text-align:left; font-size:small">
+            <span>{{ks}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-10 col-md-10 col-lg-10" ng-show="shown">
+    <div class="panel panel-default" style="height:100%">
+      <div class="panel-heading" style="height:100%;text-transform:none">CQL:</div>
+      <div class="panel-body" style="height:100%"> 
+        Available tables:
+        <select class="genres" ng-options="name.columnfamily_name for name in tables" ng-model="tab" ng-change="GenerateTables(tab.columnfamily_name, tab.keyspace_name, tip)"></select>
+        <form class="form" method="post"  ng-submit="addShow()" name="addForm" >  
+          <div class="form-group"><br />
+      <input class="form-control" type="text" name="textQuery" ng-model="textQuery" placeholder="Put your query here" required autofocus>        
+      <div class="help-block text-danger" ng-if="addForm.textQuery.$dirty" ng-messages="addForm.textQuery.$error">
+            <div ng-message="required">Please enter a query.</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" ng-disabled="addForm.$invalid">Run</button>
+    <button class="btn btn-primary" ng-click="resetForm()">Clear</button> {{errorMessage}}
+  </form><br />
+        <div id="dtabex" style="height:100%">
+          <table id="tabex">
+            <tr>
+              <th ng-repeat="(key, value) in genData[0]" id="thex">{{key}}</th>
+            </tr>
+            <tr ng-repeat="items in genData">
+              <td ng-repeat="(key,value) in items" id="tdex">{{value}}</td>
+            </tr>
+          </table>
+        </div></br>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="container-fluid" style="height:100%">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+    <div class="panel panel-default" style="height:100%">
+      <div class="panel-heading" style="height:100%;text-transform:none">Control bot</div>
+      <div class="panel-body">
+        Enter Coordinates:
+        <form class="form" method="post"  ng-submit="fetchDrone()" name="addForm" >  
+          <div class="form-group"><br />
+      <input class="form-control" type="text" name="textQuery" ng-model="textQuery" placeholder="Put the value of Latitude and Longitude" required autofocus>        
+      <div class="help-block text-danger" ng-if="addForm.textQuery.$dirty" ng-messages="addForm.textQuery.$error">
+            <div ng-message="required">Please enter a coordinate values</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" ng-disabled="addForm.$invalid">Go</button>
+    <button class="btn btn-primary" ng-click="resetForm()">Clear</button> 
+  </form>
+  <br />
+  <br />
+  <br />
+      <div class="panel-status">
+          {{botStatus}}
+      </div>
+      <br />
+      <button class="btn btn-primary" ng-click="goBack()" ng-show="shown">Back to current Position</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6 col-lg-6" style="height:100%">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="text-transform:none">Map<span id="phvex">{{keySpace}}</span></div>
+      <div>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+          <ui-gmap-marker coords="marker.coords" idkey="marker.id"></ui-gmap-marker>
+        </ui-gmap-google-map>
+      </div>
+
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6 col-lg-6" style="height:100%">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="text-transform:none">Data<span id="phvex"></span></div>
+      <div class="panel-body" style="overflow:auto">
+        <ul class="genres">
+          <li ng-click="GetTemp()">
+            Temperature
+          </li>
+          <li ng-click="GetLight()">
+            Light
+          </li>
+          <li ng-click="GetWave()">
+            Wave Height
+          </li>
+          <li ng-click="GetDepth()">
+            Depth
+          </li>
+          <li ng-click="GetCurrent()">
+            Current
+          </li>
+          <li ng-click="GetHumid()">
+            Humidity
+          </li>
+          <li ng-click="GetWind()">
+            Wind Speed
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6 col-lg-6" style="height:100%">
+    <div class="panel panel-default">
+      <div class="panel-heading" style="text-transform:none">{{measurement}} in Last 12 hours ({{magnitude}})<span id="phvex"></span></div>
+      <bars chart-data="dataList"></bars>
+    </div>
+  </div>
+</div>
